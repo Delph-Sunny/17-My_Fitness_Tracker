@@ -10,6 +10,10 @@
     "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Delph-Sunny/17-My_Fitness_Tracker.git"
+  },
   "author": "Delph Sunny",
   "license": "MIT",
   "dependencies": {
@@ -19,7 +23,7 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
-    "eslint": "^7.19.0",
+    "eslint": "^7.21.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.7"
