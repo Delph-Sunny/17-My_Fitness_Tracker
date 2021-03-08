@@ -1,7 +1,6 @@
 # 17-My_Fitness_Tracker  
 
-<span align="center"> 
-:construction:   IN PROGRESS  :construction:   
+<span align="center">   
 
 ---
 
@@ -47,18 +46,20 @@ I want to track my distance traveled.
 
 :information_source:  
 
-TO DO
-
+The MongoDB _workout_ contains only one collection called _workouts_.  
 
 
 ## Installation and Usage  
 
+You can use directly the [deployed app](https://homework-17-my-fitness-tracker.herokuapp.com/) on Heroku or run it locally with the following steps:   
 - Open a terminal instance  
 - Clone the following [repo](https://github.com/Delph-Sunny/17-My_Fitness_Tracker)  
 - In the working directory, install the dependencies package with the following code line `npm i`  
-- Once the dependencies have been installed and the .env added, enter `npm start`  
- 
+- Once the dependencies have been installed, enter `npm run seed` if you want some data.  
+- Then enter `npm start` or `npm run watch`. 
 
+When using the app, follow the queries to add new workouts or exercises. Note: All fields are mandatory.  
+Go to the Dashboard page to see the workout statistics.  
 
 ## Images of the App :mag:  
 

@@ -6,6 +6,7 @@ const path = require("path");
 const PORT = process.env.PORT || 3000;
 // Creating express app
 const app = express();
+
 app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -13,7 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // Connect to MongoDB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
 }).then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
