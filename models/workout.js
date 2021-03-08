@@ -39,11 +39,12 @@ const workoutSchema = new Schema({
         default: 0
       }
     }
-  ],
+  ] ,
+  // while aggregate method not used, use code below
   totalDuration: {
     type: Number,
     default: 0,
-  }
+  } 
 });
 
 const Workout = mongoose.model("Workout", workoutSchema);
