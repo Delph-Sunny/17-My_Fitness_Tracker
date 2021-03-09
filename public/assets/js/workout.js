@@ -1,7 +1,7 @@
 /* eslint-disable no-use-before-define */
 async function initWorkout() {
   const lastWorkout = await API.getLastWorkout();
-  console.log("Last workout:", lastWorkout);
+  console.log("Last workout:", lastWorkout); // FOR TESTING
   if (lastWorkout) {
     document
       .querySelector("a[href='/exercise?']")

@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
-}).then(() => console.log("MongoDB Connected"))
+}).then(() => console.log("   ***** MongoDB Connected *****"))
   .catch(err => console.log(err));
 
 // Requiring our routes
@@ -25,5 +25,7 @@ require("./routes/html-routes.js")(app);
 
 // Logging a message to the user upon success
 app.listen(PORT, () => {
-  console.log("==> 🌎 Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
+  console.log(`
+   ==> 🌎 Listening on port ${PORT}. Visit http://localhost:${PORT}/ in your browser.
+  `);
 });
