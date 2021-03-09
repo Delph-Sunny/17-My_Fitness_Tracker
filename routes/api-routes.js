@@ -54,9 +54,9 @@ module.exports = (app) => {
       ]
     )
     // Get the last 7 workouts only
-      .sort( {day: "desc" })
+     // .sort( {day: "desc" })
       .limit(7)
-      .sort( {day: "asc" }) // reorder from oldest to newest for charts display
+     // .sort( {day: "asc" }) // reorder from oldest to newest for charts display
       .then((workout) => {
         res.status(200).json(workout);
       })

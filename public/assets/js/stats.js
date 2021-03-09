@@ -25,6 +25,7 @@ function generatePalette() {
 
 function populateChart(data) {
   let durations = data.map(({ totalDuration }) => totalDuration);
+  console.log("List of duration: ", durations); // FOR TESTING
   let pounds = calculateTotalWeight(data);
   let workouts = workoutNames(data);
   const colors = generatePalette();
@@ -149,7 +150,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: "Exercises Performed",
+        text: "Exercises Performed in Duration",
       },
     },
   });
@@ -169,7 +170,7 @@ function populateChart(data) {
     options: {
       title: {
         display: true,
-        text: "Exercises Performed",
+        text: "Exercises Performed in Pounds",
       },
     },
   });
@@ -201,6 +202,7 @@ function workoutNames(data) {
       workouts.push(exercise.name);
     });
   });
+  console.log("List of exercises names: ", workouts); // FOR TESTING
 
   // return de-duplicated array with JavaScript `Set` object
   return [...new Set(workouts)];
