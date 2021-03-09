@@ -1,7 +1,8 @@
 const db = require("../models");
 
+/*
+// Add the total duration without the aggregate method
 function durationCalculation(workout) {
-  // Add the total duration without the aggregate methode
   workout.forEach((workout) => {
     let total = 0;
     workout.exercises.forEach((ex) => {
@@ -10,7 +11,7 @@ function durationCalculation(workout) {
     workout.totalDuration = total;
   });
   return workout.totalDuration;
-}
+} */
 
 module.exports = (app) => {
 // Create new workout
@@ -25,18 +26,21 @@ module.exports = (app) => {
 
   // Get all workouts
   app.get("/api/workouts", (req, res) => {
-    db.Workout.find({})
-    /*  .aggregate(
+    db.Workout.aggregate(
+      [
         {
-          $addFields: { totalDuration: { $sum: "$exercises.duration" } }
-        }) */
-      .then((workout) => {
-        durationCalculation(workout);
-        console.log("All past data:", workout); // FOR TESTING
-        res.status(200).json(workout);
-      }).catch((err) => {
-        res.status(400).json(err);
-      });
+          $addFields: {
+            totalDuration: {$sum: "$exercises.duration"}
+          }
+        }
+      ]
+    ).then((workout) => {
+      /* durationCalculation(workout); */
+      console.log("All past data:", workout); // FOR TESTING
+      res.status(200).json(workout);
+    }).catch((err) => {
+      res.status(400).json(err);
+    });
   });
 
   app.put("/api/workouts/:id", function({body, params}, res) {
@@ -56,11 +60,21 @@ module.exports = (app) => {
 
 
   app.get("/api/workouts/range", (req, res) => {
-    db.Workout.find({})
-    /* .limit(7)*/  // TO DO: Replace by last 7 days
-      .sort( {day: "asc" })
+    db.Workout.aggregate(
+      [
+        {
+          $addFields: {
+            totalDuration: {$sum: "$exercises.duration"}
+          }
+        }
+      ]
+    )
+    // Get the last 14 workouts only
+      .sort( {day: "desc" })
+      .limit(14)
+      .sort( {day: "asc" }) // reorder from oldest to newest for charts display
       .then((workout) => {
-        durationCalculation(workout); // Calculate TotalDuration
+        /*  durationCalculation(workout); // Calculate TotalDuration */
         res.status(200).json(workout);
       })
       .catch((err) => {
