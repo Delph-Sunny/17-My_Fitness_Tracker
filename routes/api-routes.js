@@ -1,22 +1,8 @@
 const db = require("../models");
 
-/*
-// Add the total duration without the aggregate method
-function durationCalculation(workout) {
-  workout.forEach((workout) => {
-    let total = 0;
-    workout.exercises.forEach((ex) => {
-      total += ex.duration;
-    });
-    workout.totalDuration = total;
-  });
-  return workout.totalDuration;
-} */
-
 module.exports = (app) => {
 // Create new workout
   app.post("/api/workouts", ({ body }, res) => {
-    console.log("New workout: ", body); // FOR TESTING
     db.Workout.create(body).then((workout) => {
       res.status(201).json(workout);
     }).catch((err) => {
@@ -35,14 +21,13 @@ module.exports = (app) => {
         }
       ]
     ).then((workout) => {
-      /* durationCalculation(workout); */
-      console.log("All past data:", workout); // FOR TESTING
       res.status(200).json(workout);
     }).catch((err) => {
       res.status(400).json(err);
     });
   });
 
+  // Update workout: Add new exercises to the last workout displayed
   app.put("/api/workouts/:id", function({body, params}, res) {
     db.Workout.findByIdAndUpdate(
       params.id,
@@ -50,7 +35,6 @@ module.exports = (app) => {
       { new: true }
     )
       .then((workout) => {
-        console.log("new exercise in Workout = ", workout); // FOR TESTING
         res.status(200).json(workout);
       })
       .catch((err) => {
@@ -58,7 +42,7 @@ module.exports = (app) => {
       });
   });
 
-
+  // Get all workouts within a range
   app.get("/api/workouts/range", (req, res) => {
     db.Workout.aggregate(
       [
@@ -69,12 +53,11 @@ module.exports = (app) => {
         }
       ]
     )
-    // Get the last 14 workouts only
+    // Get the last 7 workouts only
       .sort( {day: "desc" })
-      .limit(14)
+      .limit(7)
       .sort( {day: "asc" }) // reorder from oldest to newest for charts display
       .then((workout) => {
-        /*  durationCalculation(workout); // Calculate TotalDuration */
         res.status(200).json(workout);
       })
       .catch((err) => {
