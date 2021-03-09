@@ -63,8 +63,8 @@ Go to the Dashboard page to see the workout statistics.
 
 ## Images of the App :mag:  
 
-![My_Fitness_Tracker](./images/Snippet1.PNG)  
-
+![My_Fitness_Tracker](./public/assets/img/snippet_1.PNG)  
+![My_Fitness_Tracker2](./public/assets/img/snippet_2.PNG)  
 
 ## License  
 
