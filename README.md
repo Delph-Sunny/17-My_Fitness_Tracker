@@ -35,7 +35,7 @@ User Story Acceptance Criteria
 ```
 ```
 AS a exercises fan, I want to be able to view, create and track daily workouts,  
-SO I can have a clear an easy visual of my workout details.  
+SO I can have a clear an easy visual of my 7 last workout details.  
 WHEN I create a workout on a given day,  
 I want to log multiple exercises for this workout.  
 WHEN I add a new excercise,  
